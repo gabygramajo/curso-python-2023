@@ -70,7 +70,11 @@ def add_client():
 # --- op 2 ---
 def del_client():
   while True: 
-    nif = input('Ingresar Nif del Cliente a eliminar: ').upper()
+    nif = input('Ingresar Nif del Cliente a eliminar (0=exit): ').upper()
+
+    if nif == '0' or nif == "EXIT": 
+      print("Saliendo del programa...")
+      break
     if nif in clientes:
       print(f"Borrando el cliente: {clientes[nif]}")
       del clientes[nif]
@@ -80,7 +84,11 @@ def del_client():
 # --- op 3 ---
 def show_client():
   while True: 
-    nif = input('Ingresar Nif del Cliente a mostrar: ').upper()
+    nif = input('Ingresar Nif del Cliente a mostrar (0=exit): ').upper()
+
+    if nif == '0' or nif == "EXIT": 
+      print("Saliendo del programa...")
+      break
     if nif in clientes:
       for date, value in clientes[nif].items():
         print(f"{date}: {value}")
@@ -111,23 +119,25 @@ def show_preferents():
 def main():
   print(f"## GESTOR DE BBDD DE LOS CLIENTES {len(clientes)} DE LA EMPRESA ##")
 
-  op = show_menu()
+  while True:
+    op = show_menu()
 
-  if op == 6:
-    print("Saliendo del programa...")
-  elif op == 1:
-    print("Ingrese los datos del cliente")
-    add_client()
-  elif op == 2:
-    del_client()
-  elif op == 3:
-    show_client()
-  elif op == 4:
-    print("Mostrando todo los clientes...")
-    show_all_client()
-  elif op == 5:
-    print("Mostrando clientes preferentes...")
-    show_preferents()
+    if op == 6:
+      print("Saliendo del programa...")
+      break
+    elif op == 1:
+      print("Ingrese los datos del cliente")
+      add_client()
+    elif op == 2:
+      del_client()
+    elif op == 3:
+      show_client()
+    elif op == 4:
+      print("Mostrando todo los clientes...")
+      show_all_client()
+    elif op == 5:
+      print("Mostrando clientes preferentes...")
+      show_preferents()
 
 # run
 main()
