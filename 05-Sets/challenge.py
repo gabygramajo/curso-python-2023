@@ -10,6 +10,5 @@ print(new_set)
 # >> {'BZ', 'USA', 'ARG', 'GT', 'COL', 'CANADA', 'MX'}
 
 new_set.intersection(countries, northAm, centralAm, southAm)
-
 print(new_set)
 # >>
